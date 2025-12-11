@@ -3,69 +3,152 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Prasoon | Portfolio</title>
+  <title>Prasoon | Web Developer</title>
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <!-- HEADER -->
-  <header>
-    <h1>Prasoon</h1>
-    <nav>
-      <a href="#about">About</a>
+  <!-- ANIMATED BACKGROUND -->
+  <div class="bg-blob blob1"></div>
+  <div class="bg-blob blob2"></div>
+  <div class="bg-blob blob3"></div>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="avatar">P</div>
+      <h1>Prasoon</h1>
+      <p>Web Developer</p>
+    </div>
+
+    <nav class="nav-links">
+      <a href="#hero">Home</a>
       <a href="#projects">Projects</a>
+      <a href="#about">About</a>
       <a href="#contact">Contact</a>
     </nav>
-    <button id="toggle">Dark Mode</button>
-  </header>
 
-  <!-- ABOUT SECTION -->
-  <section id="about">
-    <h2>About Me</h2>
-    <p>Hello! I'm Prasoon, a web developer passionate about creating clean and interactive websites.</p>
-    <img src="me.jpg" alt="Portrait of Prasoon" class="profile-img">
-  </section>
-
-  <!-- PROJECTS SECTION -->
-  <section id="projects">
-    <h2>Projects</h2>
-
-    <div class="project-card">
-      <img src="project1.png" alt="Screenshot of Project 1">
-      <h3>Project One</h3>
-      <p>A cool project built using HTML, CSS, and JavaScript.</p>
+    <div class="theme-switcher">
+      <h3>Themes</h3>
+      <button data-theme="default" class="theme-btn active">Default</button>
+      <button data-theme="sunset" class="theme-btn">Sunset</button>
+      <button data-theme="neon" class="theme-btn">Neon</button>
+      <button data-theme="dark" class="theme-btn">Dark</button>
     </div>
+  </aside>
 
-    <div class="project-card">
-      <img src="project2.png" alt="Screenshot of Project 2">
-      <h3>Project Two</h3>
-      <p>A responsive website designed with modern UI principles.</p>
-    </div>
+  <!-- MAIN CONTENT -->
+  <main class="main-content">
 
-  </section>
+    <!-- HERO SECTION WITH STORY & ANIMATION -->
+    <section id="hero" class="hero">
+      <p class="hero-tag">Hi, I’m</p>
+      <h2 class="hero-name">Prasoon</h2>
+      <h3 class="hero-roles">
+        I build <span id="hero-typing"></span>
+      </h3>
+      <p class="hero-text">
+        A web developer crafting clean, interactive, and modern web experiences with attention to detail and feel.
+      </p>
+      <div class="hero-actions">
+        <a href="#projects" class="btn primary-btn">View Projects</a>
+        <a href="#contact" class="btn ghost-btn">Contact Me</a>
+      </div>
+    </section>
 
-  <!-- CONTACT SECTION -->
-  <section id="contact">
-    <h2>Contact</h2>
-    <form>
-      <label for="name">Name:</label>
-      <input id="name" type="text" placeholder="Enter your name">
+    <!-- PROJECTS WITH INTERACTIVE CARDS -->
+    <section id="projects" class="section">
+      <h2>Projects</h2>
+      <p class="section-subtitle">Hover over a card to see more details.</p>
 
-      <label for="email">Email:</label>
-      <input id="email" type="email" placeholder="Enter your email">
+      <div class="projects-grid">
 
-      <label for="message">Message:</label>
-      <textarea id="message" placeholder="Write your message"></textarea>
+        <article class="project-card">
+          <div class="project-inner">
+            <div class="project-front">
+              <h3>Project One</h3>
+              <p>Responsive portfolio website.</p>
+            </div>
+            <div class="project-back">
+              <p>
+                Built using HTML, CSS, and JavaScript with smooth scrolling, dark mode, and a modern layout.
+              </p>
+              <span class="project-tags">HTML · CSS · JS</span>
+            </div>
+          </div>
+        </article>
 
-      <button type="submit">Send</button>
-    </form>
-  </section>
+        <article class="project-card">
+          <div class="project-inner">
+            <div class="project-front">
+              <h3>Project Two</h3>
+              <p>Interactive UI components.</p>
+            </div>
+            <div class="project-back">
+              <p>
+                A collection of buttons, cards, and animations focused on micro-interactions and user experience.
+              </p>
+              <span class="project-tags">UI · Animations</span>
+            </div>
+          </div>
+        </article>
 
-  <!-- FOOTER -->
-  <footer>
-    <p>© 2025 Prasoon. All rights reserved.</p>
-  </footer>
+        <article class="project-card">
+          <div class="project-inner">
+            <div class="project-front">
+              <h3>Project Three</h3>
+              <p>Concept landing page.</p>
+            </div>
+            <div class="project-back">
+              <p>
+                A clean landing page design with a strong hero section, call-to-actions, and animated background.
+              </p>
+              <span class="project-tags">Design · Frontend</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="section">
+      <h2>About Me</h2>
+      <p>
+        I’m a web developer who enjoys building interfaces that feel smooth, responsive, and intentional.
+        I care about clear structure, thoughtful design, and small details that make a big difference.
+      </p>
+      <p>
+        My current focus is on improving my frontend skills with HTML, CSS, and JavaScript while learning modern
+        patterns that make websites feel alive and personal.
+      </p>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="section">
+      <h2>Contact</h2>
+      <p>If you’d like to connect or collaborate, feel free to drop a message.</p>
+
+      <form class="contact-form">
+        <label for="name">Name</label>
+        <input id="name" type="text" placeholder="Enter your name" aria-label="Your name">
+
+        <label for="email">Email</label>
+        <input id="email" type="email" placeholder="Enter your email" aria-label="Your email">
+
+        <label for="message">Message</label>
+        <textarea id="message" placeholder="Write your message" aria-label="Your message"></textarea>
+
+        <button type="submit" class="btn primary-btn">Send Message</button>
+      </form>
+    </section>
+
+    <footer class="footer">
+      <p>© 2025 Prasoon. All rights reserved.</p>
+    </footer>
+
+  </main>
 
   <script src="script.js"></script>
 </body>
