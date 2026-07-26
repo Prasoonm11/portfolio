@@ -1,35 +1,35 @@
 @import "tailwindcss";
 
 @theme inline {
-  /* === New Color System - Warm & Professional === */
-  --color-background: #0a0a0f;
-  --color-surface: #12121a;
-  --color-surface-elevated: #1a1a24;
-  --color-surface-hover: #22222e;
+  /* === Resend Monochrome & Premium Dark Theme === */
+  --color-background: #000000;
+  --color-surface: #0a0a0a;
+  --color-surface-elevated: #121212;
+  --color-surface-hover: #1c1c1c;
 
-  /* Primary - Warm Gold/Amber */
-  --color-primary: #f59e0b;
-  --color-primary-light: #fbbf24;
-  --color-primary-dark: #d97706;
-  --color-primary-muted: rgba(245, 158, 11, 0.1);
-  --color-on-primary: #0a0a0f;
+  /* Primary - High Contrast White */
+  --color-primary: #ffffff;
+  --color-primary-light: #f4f4f5;
+  --color-primary-dark: #a1a1aa;
+  --color-primary-muted: rgba(255, 255, 255, 0.05);
+  --color-on-primary: #000000;
 
-  /* Secondary - Cool Cyan */
-  --color-secondary: #06b6d4;
-  --color-secondary-light: #22d3ee;
-  --color-secondary-muted: rgba(6, 182, 212, 0.1);
+  /* Secondary - Silver Muted */
+  --color-secondary: #a1a1aa;
+  --color-secondary-light: #e4e4e7;
+  --color-secondary-muted: rgba(255, 255, 255, 0.03);
 
-  /* Accent - Coral/Salmon */
-  --color-accent: #f97316;
-  --color-accent-light: #fb923c;
+  /* Accent - Silver / Pure White */
+  --color-accent: #ffffff;
+  --color-accent-light: #fafafa;
 
   /* Text */
-  --color-text-primary: #fafafa;
-  --color-text-secondary: #a1a1aa;
-  --color-text-muted: #71717a;
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #8e8e8f;
+  --color-text-muted: #5e5e5f;
 
   /* Borders & Dividers */
-  --color-border: rgba(255, 255, 255, 0.08);
+  --color-border: rgba(255, 255, 255, 0.06);
   --color-border-light: rgba(255, 255, 255, 0.12);
 
   /* Status Colors */
@@ -38,7 +38,8 @@
   --color-warning: #f59e0b;
 
   /* Typography */
-  --font-sans: "Inter", "Outfit", system-ui, sans-serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-serif: var(--font-serif), Georgia, serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
 
   /* Animation Tokens */
@@ -62,8 +63,8 @@
   }
 
   ::selection {
-    background: rgba(245, 158, 11, 0.3);
-    color: #fafafa;
+    background: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
   }
 
   /* Custom Scrollbar */
@@ -73,16 +74,16 @@
   }
 
   ::-webkit-scrollbar-track {
-    background: #0a0a0f;
+    background: #000000;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: #27272a;
+    background: #1f1f1f;
     border-radius: 3px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: #3f3f46;
+    background: #2f2f2f;
   }
 }
 
@@ -97,19 +98,19 @@
 
   /* Section Title */
   .section-title {
-    @apply text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-4;
+    @apply text-4xl md:text-5xl lg:text-6xl font-normal font-serif tracking-tight mb-4;
   }
 
   .section-subtitle {
-    @apply text-lg md:text-xl text-text-secondary max-w-2xl;
+    @apply text-base md:text-lg text-text-secondary max-w-2xl font-light;
   }
 
   /* Eyebrow Tag */
   .eyebrow {
-    @apply inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-widest mb-6;
-    background: var(--color-primary-muted);
-    border: 1px solid rgba(245, 158, 11, 0.2);
-    color: var(--color-primary);
+    @apply inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-[10px] font-medium uppercase tracking-[0.2em] mb-6;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    color: var(--color-text-secondary);
   }
 
   /* Card Styles */
@@ -122,13 +123,14 @@
   .card:hover {
     background: var(--color-surface-elevated);
     border-color: var(--color-border-light);
-    transform: translateY(-4px);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
   }
 
   /* Glass Card */
   .glass-card {
     @apply rounded-2xl;
-    background: rgba(18, 18, 26, 0.7);
+    background: rgba(10, 10, 10, 0.7);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border: 1px solid var(--color-border);
@@ -136,7 +138,7 @@
 
   /* Gradient Text */
   .gradient-text {
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 50%, var(--color-secondary) 100%);
+    background: linear-gradient(135deg, #ffffff 0%, #a1a1aa 50%, #ffffff 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -144,60 +146,63 @@
 
   /* Button Styles */
   .btn-primary {
-    @apply inline-flex items-center gap-3 px-8 py-4 rounded-full font-bold text-sm uppercase tracking-wider transition-all duration-300;
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
-    color: var(--color-on-primary);
+    @apply inline-flex items-center gap-2 px-6 py-3 rounded-lg font-medium text-xs uppercase tracking-wider transition-all duration-300;
+    background: #ffffff;
+    color: #000000;
+    border: 1px solid #ffffff;
   }
 
   .btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 20px 40px rgba(245, 158, 11, 0.3);
+    transform: translateY(-1px);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.15);
   }
 
   .btn-secondary {
-    @apply inline-flex items-center gap-3 px-8 py-4 rounded-full font-bold text-sm uppercase tracking-wider transition-all duration-300;
+    @apply inline-flex items-center gap-2 px-6 py-3 rounded-lg font-medium text-xs uppercase tracking-wider transition-all duration-300;
     background: transparent;
     border: 1px solid var(--color-border-light);
     color: var(--color-text-primary);
   }
 
   .btn-secondary:hover {
-    border-color: var(--color-primary);
-    color: var(--color-primary);
+    border-color: #ffffff;
+    background: rgba(255, 255, 255, 0.05);
+    color: #ffffff;
+    transform: translateY(-1px);
   }
 
   /* Tag/Badge */
   .tag {
-    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium;
-    background: rgba(255, 255, 255, 0.05);
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-md text-[10px] font-medium;
+    background: rgba(255, 255, 255, 0.04);
     border: 1px solid var(--color-border);
     color: var(--color-text-secondary);
   }
 
   /* Progress Bar */
   .progress-bar {
-    @apply h-2 rounded-full overflow-hidden;
-    background: rgba(255, 255, 255, 0.1);
+    @apply h-1.5 rounded-full overflow-hidden;
+    background: rgba(255, 255, 255, 0.06);
   }
 
   .progress-fill {
     @apply h-full rounded-full;
-    background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+    background: #ffffff;
   }
 
   /* Social Links */
   .social-link {
-    @apply w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-300;
+    @apply w-10 h-10 rounded-lg flex items-center justify-center transition-all duration-300;
     background: var(--color-surface);
     border: 1px solid var(--color-border);
     color: var(--color-text-secondary);
   }
 
   .social-link:hover {
-    background: var(--color-primary-muted);
-    border-color: var(--color-primary);
-    color: var(--color-primary);
-    transform: translateY(-4px);
+    background: var(--color-surface-elevated);
+    border-color: var(--color-border-light);
+    color: #ffffff;
+    transform: translateY(-2px);
   }
 }
 

@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
 const containerVariants = {
@@ -15,7 +16,7 @@ const itemVariants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { type: "spring", stiffness: 100, damping: 15 }
+    transition: { type: "spring" as const, stiffness: 100, damping: 15 }
   }
 };
 
@@ -48,12 +49,21 @@ const hackerRankStats = {
   certificates: ["Problem Solving", "Python", "JavaScript", "React"],
 };
 
-// Generate fake contribution data
-const contributionData = Array.from({ length: 52 }, () =>
-  Array.from({ length: 7 }, () => Math.floor(Math.random() * 5))
+// Generate empty base contribution data for stable initial SSR
+const emptyContributionData = Array.from({ length: 52 }, () =>
+  Array.from({ length: 7 }, () => 0)
 );
 
 export default function TechStatus() {
+  const [contributionData, setContributionData] = useState<number[][]>(emptyContributionData);
+
+  useEffect(() => {
+    setContributionData(
+      Array.from({ length: 52 }, () =>
+        Array.from({ length: 7 }, () => Math.floor(Math.random() * 5))
+      )
+    );
+  }, []);
   return (
     <section id="status" className="section-container">
       <motion.div

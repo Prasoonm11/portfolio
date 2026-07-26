@@ -53,11 +53,11 @@ export default function Navbar() {
 
   return (
     <>
-      {/* Desktop Navigation */}
+      {/* Navigation Header */}
       <motion.header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled
-            ? "py-3 bg-background/80 backdrop-blur-xl border-b border-border"
+            ? "py-3 bg-black/85 backdrop-blur-md border-b border-neutral-900"
             : "py-5 bg-transparent"
         }`}
         initial={{ y: -100 }}
@@ -66,18 +66,17 @@ export default function Navbar() {
       >
         <div className="max-w-7xl mx-auto px-6">
           <nav className="flex items-center justify-between">
-            {/* Logo */}
-            <Link href="/" className="flex items-center gap-2">
+            {/* Logo - Minimalist Monochrome */}
+            <Link href="/" className="flex items-center gap-2 select-none">
               <motion.div
-                className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center font-black text-background"
-                whileHover={{ rotate: 360 }}
-                transition={{ duration: 0.5 }}
+                className="w-8 h-8 rounded bg-white flex items-center justify-center font-bold text-black text-sm"
+                whileHover={{ rotate: 180 }}
+                transition={{ duration: 0.3 }}
               >
                 P
               </motion.div>
-              <span className="font-bold text-lg hidden sm:block">
-                <span className="text-text-primary">Prasoon</span>
-                <span className="gradient-text">.dev</span>
+              <span className="font-medium text-base hidden sm:block tracking-wide font-serif text-white">
+                Prasoon<span className="text-neutral-500 font-sans font-light text-xs">.dev</span>
               </span>
             </Link>
 
@@ -87,16 +86,16 @@ export default function Navbar() {
                 <Link
                   key={link.name}
                   href={link.href}
-                  className={`relative px-4 py-2 text-sm font-medium rounded-lg transition-colors ${
+                  className={`relative px-4 py-2 text-xs font-medium uppercase tracking-wider transition-colors ${
                     activeSection === link.href.slice(1)
-                      ? "text-primary"
-                      : "text-text-secondary hover:text-text-primary"
+                      ? "text-white font-semibold"
+                      : "text-neutral-400 hover:text-white"
                   }`}
                 >
                   {link.name}
                   {activeSection === link.href.slice(1) && (
                     <motion.div
-                      className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-primary"
+                      className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-white"
                       layoutId="navIndicator"
                     />
                   )}
@@ -104,11 +103,11 @@ export default function Navbar() {
               ))}
             </div>
 
-            {/* CTA Button */}
+            {/* CTA Button / Menu Toggle */}
             <div className="flex items-center gap-4">
               <motion.a
                 href="#contact"
-                className="btn-primary hidden sm:inline-flex text-xs px-5 py-2.5"
+                className="btn-primary hidden sm:inline-flex text-[10px] px-4 py-2 rounded"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
@@ -117,12 +116,13 @@ export default function Navbar() {
 
               {/* Mobile Menu Toggle */}
               <motion.button
-                className="md:hidden w-10 h-10 rounded-xl bg-surface flex items-center justify-center"
+                className="md:hidden w-8 h-8 rounded bg-neutral-900 border border-neutral-800 flex items-center justify-center text-white"
                 onClick={() => setIsMobileMenuOpen(true)}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                aria-label="Toggle Menu"
               >
-                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
                 </svg>
               </motion.button>
@@ -131,7 +131,7 @@ export default function Navbar() {
         </div>
       </motion.header>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu Overlay */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
@@ -142,7 +142,7 @@ export default function Navbar() {
           >
             {/* Backdrop */}
             <motion.div
-              className="absolute inset-0 bg-background/95 backdrop-blur-xl"
+              className="absolute inset-0 bg-black/98 backdrop-blur-lg"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -159,18 +159,19 @@ export default function Navbar() {
             >
               {/* Close Button */}
               <motion.button
-                className="absolute top-6 right-6 w-12 h-12 rounded-full bg-surface flex items-center justify-center"
+                className="absolute top-6 right-6 w-10 h-10 rounded-full bg-neutral-900 border border-neutral-800 flex items-center justify-center text-white"
                 onClick={() => setIsMobileMenuOpen(false)}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                aria-label="Close Menu"
               >
-                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </motion.button>
 
               {/* Navigation Links */}
-              <nav className="space-y-4 text-center">
+              <nav className="space-y-6 text-center">
                 {navLinks.map((link, index) => (
                   <motion.div
                     key={link.name}
@@ -181,7 +182,7 @@ export default function Navbar() {
                     <Link
                       href={link.href}
                       onClick={() => setIsMobileMenuOpen(false)}
-                      className="block text-3xl font-bold text-text-secondary hover:text-primary transition-colors"
+                      className="block text-2xl font-serif text-neutral-400 hover:text-white transition-colors"
                     >
                       {link.name}
                     </Link>
@@ -193,7 +194,7 @@ export default function Navbar() {
               <motion.a
                 href="#contact"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="btn-primary mt-12"
+                className="btn-primary mt-12 rounded px-6 py-2.5"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4 }}
