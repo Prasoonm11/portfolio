@@ -22,33 +22,30 @@ const itemVariants = {
 const education = [
   {
     id: 1,
-    degree: "Bachelor of Technology",
-    field: "Computer Science & Engineering",
-    institution: "Indian Institute of Technology",
-    period: "2018 - 2022",
-    grade: "8.5 CGPA",
-    description: "Specialized in Software Engineering and Distributed Systems. Active member of the Programming Club and Open Source Community.",
-    activities: [
-      "Winner, CodeStorm 2020 Hackathon",
-      "Technical Lead, Web Development Club",
-      "Published research paper on distributed computing",
-    ],
+    degree: "B.Tech in Computer Science & Engineering",
+    institution: "Manipal University Jaipur",
+    period: "2024 - Present",
+    grade: "8.23 CGPA",
+    description: "Deepening knowledge in software engineering, backend architectures, machine learning modeling, and cloud technologies.",
     color: "#f59e0b",
   },
   {
     id: 2,
-    degree: "Higher Secondary",
-    field: "Science (PCM)",
-    institution: "Delhi Public School",
-    period: "2016 - 2018",
-    grade: "92%",
-    description: "Excelled in Mathematics and Physics while participating in various coding competitions and tech festivals.",
-    activities: [
-      "National Science Olympiad Participant",
-      "School Captain",
-      "JEE Main AIR 2345",
-    ],
+    degree: "Higher Secondary Certificate (Class XII)",
+    institution: "Rukmani Birla Modern High School, Jaipur",
+    period: "2024",
+    grade: "75%",
+    description: "Completed secondary education focusing on Physics, Chemistry, and Mathematics.",
     color: "#06b6d4",
+  },
+  {
+    id: 3,
+    degree: "Secondary School Certificate (Class X)",
+    institution: "Rukmani Birla Modern High School, Jaipur",
+    period: "2022",
+    grade: "84%",
+    description: "Completed foundation education with strong academic honors.",
+    color: "#a855f7",
   },
 ];
 
@@ -81,7 +78,7 @@ export default function Education() {
         </motion.div>
 
         {/* Education Cards */}
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-3 gap-5">
           {education.map((edu, index) => (
             <motion.div
               key={edu.id}
@@ -120,30 +117,9 @@ export default function Education() {
                 </div>
 
                 <h3 className="text-xl font-bold mb-1">{edu.degree}</h3>
-                <p className="text-text-secondary mb-2">{edu.field}</p>
                 <p className="text-primary font-medium mb-4">{edu.institution}</p>
 
                 <p className="text-sm text-text-muted mb-4">{edu.description}</p>
-
-                {/* Activities */}
-                <div className="border-t border-border pt-4">
-                  <h4 className="text-xs font-semibold uppercase tracking-wider text-text-muted mb-3">Achievements</h4>
-                  <ul className="space-y-2">
-                    {edu.activities.map((activity, i) => (
-                      <motion.li
-                        key={i}
-                        className="flex items-center gap-2 text-sm text-text-secondary"
-                        initial={{ opacity: 0, x: -10 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ delay: i * 0.1 }}
-                        viewport={{ once: true }}
-                      >
-                        <span className="w-1.5 h-1.5 rounded-full" style={{ background: edu.color }} />
-                        {activity}
-                      </motion.li>
-                    ))}
-                  </ul>
-                </div>
               </div>
             </motion.div>
           ))}

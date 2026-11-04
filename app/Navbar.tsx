@@ -9,7 +9,6 @@ const navLinks = [
   { name: "Projects", href: "#projects" },
   { name: "Experience", href: "#experience" },
   { name: "Skills", href: "#skills" },
-  { name: "Contact", href: "#contact" },
 ];
 
 export default function Navbar() {
@@ -76,7 +75,7 @@ export default function Navbar() {
                 P
               </motion.div>
               <span className="font-medium text-base hidden sm:block tracking-wide font-serif text-white">
-                Prasoon<span className="text-neutral-500 font-sans font-light text-xs">.dev</span>
+                Prasoon<span className="text-neutral-500 font-sans font-light text-xs"> Mathur</span>
               </span>
             </Link>
 
@@ -111,7 +110,7 @@ export default function Navbar() {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
-                Hire Me
+                Contact
               </motion.a>
 
               {/* Mobile Menu Toggle */}
@@ -201,7 +200,7 @@ export default function Navbar() {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
-                Hire Me
+                Contact
               </motion.a>
             </motion.div>
           </motion.div>

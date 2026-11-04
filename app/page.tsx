@@ -4,7 +4,6 @@ import Projects from "./components/Projects";
 import Experience from "./components/Experience";
 import Education from "./components/Education";
 import Certifications from "./components/Certifications";
-import TechStatus from "./components/TechStatus";
 import TechStack from "./components/TechStack";
 import Contact from "./components/Contact";
 
@@ -17,7 +16,6 @@ export default function Home() {
       <Experience />
       <Education />
       <Certifications />
-      <TechStatus />
       <TechStack />
       <Contact />
     </>

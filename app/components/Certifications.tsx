@@ -22,63 +22,58 @@ const itemVariants = {
 const certifications = [
   {
     id: 1,
-    title: "AWS Solutions Architect",
-    issuer: "Amazon Web Services",
-    date: "2024",
-    badge: "Professional",
+    title: "AWS Academy Graduate - Cloud Foundations",
+    issuer: "Amazon Web Services Training & Certification",
+    date: "Issued by AWS · Credly",
+    badge: "Training Badge",
     icon: "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z",
     color: "#ff9900",
-    skills: ["Architecture", "Security", "Networking"],
+    skills: ["Cloud Foundations", "AWS Core Services", "Cloud Security", "Architecture"],
+    url: "https://www.credly.com/org/amazon-web-services",
   },
   {
     id: 2,
-    title: "Google Cloud Professional",
-    issuer: "Google Cloud",
-    date: "2024",
-    badge: "Data Engineer",
+    title: "NVIDIA: Prompt Engineering and Data Analysis",
+    issuer: "NVIDIA (via Coursera)",
+    date: "May 18, 2025 · ~3 Hours",
+    badge: "Verified Course",
     icon: "M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z",
-    color: "#4285f4",
-    skills: ["BigQuery", "Dataflow", "Pub/Sub"],
+    color: "#76b900",
+    skills: ["Prompt Engineering", "Data Analysis", "LLMs", "Generative AI"],
+    url: "https://www.coursera.org/learn/nvidia-prompt-engineering-and-data-analysis",
   },
   {
     id: 3,
-    title: "Certified Kubernetes Administrator",
-    issuer: "CNCF",
-    date: "2023",
-    badge: "CKA",
-    icon: "M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01",
-    color: "#326ce5",
-    skills: ["Kubernetes", "Docker", "Helm"],
+    title: "Crash Course on Python",
+    issuer: "Google (via Coursera)",
+    date: "December 26, 2024 · ~20 Hours",
+    badge: "Verified Course",
+    icon: "M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4",
+    color: "#3776ab",
+    skills: ["Python", "Data Structures", "Automation", "OOP"],
+    url: "https://www.coursera.org/learn/python-crash-course",
   },
   {
     id: 4,
-    title: "Meta Frontend Developer",
-    issuer: "Meta (Facebook)",
-    date: "2023",
-    badge: "Professional",
-    icon: "M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4",
-    color: "#0081fb",
-    skills: ["React", "JavaScript", "CSS"],
+    title: "Chatbot Building Essentials with IBM watsonx Assistant (V2)",
+    issuer: "IBM (via Coursera & Credly)",
+    date: "Issued by Coursera · Authorized by IBM",
+    badge: "IBM Authorized",
+    icon: "M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z",
+    color: "#0f62fe",
+    skills: ["watsonx Assistant", "Chatbots", "Conversational AI", "NLP"],
+    url: "https://www.credly.com/org/ibm",
   },
   {
     id: 5,
-    title: "MongoDB Developer",
-    issuer: "MongoDB University",
-    date: "2023",
-    badge: "Certification",
-    icon: "M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4",
-    color: "#47a248",
-    skills: ["MongoDB", "Aggregation", "Indexes"],
-  },
-  {
-    id: 6,
-    title: "Python for Data Science",
-    issuer: "IBM",
-    date: "2022",
-    badge: "Badge",
-    icon: "M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z",
-    color: "#3776ab",
-    skills: ["Pandas", "NumPy", "Visualization"],
+    title: "Google Cloud Basics",
+    issuer: "Google Cloud (via Credly)",
+    date: "Verified Credential",
+    badge: "Credly Badge",
+    icon: "M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 00-9.78 2.096A4.001 4.001 0 003 15z",
+    color: "#4285f4",
+    skills: ["Google Cloud Platform", "Cloud Architecture", "GCP Fundamentals"],
+    url: "https://www.credly.com/users/prasoon-mathur.0ffcc419/badges/credly",
   },
 ];
 
@@ -110,11 +105,11 @@ export default function Certifications() {
 
         {/* Certifications Grid */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {certifications.map((cert, index) => (
+          {certifications.map((cert) => (
             <motion.div
               key={cert.id}
               variants={itemVariants}
-              className="card group relative overflow-hidden"
+              className="card group relative overflow-hidden flex flex-col justify-between"
               whileHover={{ y: -8, scale: 1.02, borderColor: cert.color + "50" }}
             >
               {/* Hover Glow */}
@@ -125,59 +120,67 @@ export default function Certifications() {
                 }}
               />
 
-              <div className="relative">
-                {/* Icon & Badge */}
-                <div className="flex items-start justify-between mb-4">
-                  <motion.div
-                    className="w-14 h-14 rounded-2xl flex items-center justify-center"
-                    style={{ background: cert.color + "20" }}
-                    whileHover={{ rotate: 360, scale: 1.1 }}
-                    transition={{ duration: 0.5 }}
-                  >
-                    <svg
-                      className="w-7 h-7"
-                      style={{ color: cert.color }}
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
+              <div className="relative flex-1 flex flex-col justify-between">
+                <div>
+                  {/* Icon & Badge */}
+                  <div className="flex items-start justify-between mb-4">
+                    <motion.div
+                      className="w-14 h-14 rounded-2xl flex items-center justify-center"
+                      style={{ background: cert.color + "20" }}
+                      whileHover={{ rotate: 360, scale: 1.1 }}
+                      transition={{ duration: 0.5 }}
                     >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={cert.icon} />
-                    </svg>
-                  </motion.div>
+                      <svg
+                        className="w-7 h-7"
+                        style={{ color: cert.color }}
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={cert.icon} />
+                      </svg>
+                    </motion.div>
 
-                  <span
-                    className="px-3 py-1 rounded-full text-xs font-bold"
-                    style={{ background: cert.color + "20", color: cert.color }}
-                  >
-                    {cert.badge}
-                  </span>
-                </div>
-
-                {/* Content */}
-                <h3 className="text-lg font-bold mb-1 group-hover:text-white transition-colors">
-                  {cert.title}
-                </h3>
-                <p className="text-sm text-text-muted mb-1">{cert.issuer}</p>
-                <p className="text-xs text-text-muted/60 mb-4">{cert.date}</p>
-
-                {/* Skills */}
-                <div className="flex flex-wrap gap-2">
-                  {cert.skills.map((skill) => (
-                    <span key={skill} className="tag text-[10px]">
-                      {skill}
+                    <span
+                      className="px-3 py-1 rounded-full text-xs font-bold"
+                      style={{ background: cert.color + "20", color: cert.color }}
+                    >
+                      {cert.badge}
                     </span>
-                  ))}
+                  </div>
+
+                  {/* Content */}
+                  <h3 className="text-lg font-bold mb-1 group-hover:text-white transition-colors">
+                    {cert.title}
+                  </h3>
+                  <p className="text-sm text-text-muted mb-1">{cert.issuer}</p>
+                  <p className="text-xs text-text-muted/60 mb-4">{cert.date}</p>
+
+                  {/* Skills */}
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {cert.skills.map((skill) => (
+                      <span key={skill} className="tag text-[10px]">
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
                 </div>
 
-                {/* Verify Button */}
-                <motion.button
-                  className="w-full mt-4 py-2 rounded-lg text-xs font-semibold transition-colors"
-                  style={{ background: cert.color + "10", color: cert.color }}
-                  whileHover={{ background: cert.color + "20" }}
+                {/* Verify Credential Link */}
+                <motion.a
+                  href={cert.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full mt-4 py-2.5 rounded-lg text-xs font-semibold transition-colors flex items-center justify-center gap-1.5"
+                  style={{ background: cert.color + "15", color: cert.color }}
+                  whileHover={{ background: cert.color + "25" }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  Verify Certificate
-                </motion.button>
+                  <span>Verify Credential</span>
+                  <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </motion.a>
               </div>
             </motion.div>
           ))}

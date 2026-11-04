@@ -12,6 +12,7 @@ import TechStatus from "./components/TechStatus";
 import TechStack from "./components/TechStack";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
+import LoadingScreen from "./components/LoadingScreen";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -51,6 +52,7 @@ export default function RootLayout({
         />
       </head>
       <body className={`${inter.variable} ${jetbrainsMono.variable} ${fraunces.variable} font-sans min-h-screen flex flex-col`}>
+        <LoadingScreen />
         <Navbar />
         <main className="flex-1">
           <Hero />

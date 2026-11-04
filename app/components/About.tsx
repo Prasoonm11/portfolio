@@ -20,19 +20,11 @@ const itemVariants = {
 };
 
 const stats = [
-  { label: "Years Experience", value: "3+", icon: "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" },
-  { label: "Projects Completed", value: "20+", icon: "M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" },
-  { label: "Technologies", value: "30+", icon: "M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" },
-  { label: "Cups of Coffee", value: "∞", icon: "M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" },
+  { label: "Years Experience", value: "3+" },
+  { label: "Projects Completed", value: "10+"},
+  { label: "Technologies", value: "30+" },
 ];
 
-const highlights = [
-  "Problem solver with a passion for clean, maintainable code",
-  "Experienced in building scalable microservices architectures",
-  "Strong background in cloud-native development and DevOps",
-  "Active open source contributor and tech community member",
-  "Continuously learning and exploring new technologies",
-];
 
 export default function About() {
   return (
@@ -59,7 +51,7 @@ export default function About() {
             A passionate developer dedicated to building impactful software solutions
           </p>
         </motion.div>
-
+ 
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
           {/* Left Column - Image & Info */}
           <motion.div variants={itemVariants} className="space-y-8">
@@ -73,20 +65,20 @@ export default function About() {
                     <div className="text-xs text-text-muted mt-1">Avatar</div>
                   </div>
                 </div>
-
+ 
                 {/* Info */}
                 <div className="space-y-3">
                   <div>
                     <h3 className="text-xl font-bold">Prasoon Mathur</h3>
-                    <p className="text-text-secondary">Full Stack Developer</p>
+                    <p className="text-text-secondary">Gen AI Developer</p>
                   </div>
-
+ 
                   <div className="flex flex-wrap gap-2">
                     {["React", "Node.js", "TypeScript", "Python"].map((tech) => (
                       <span key={tech} className="tag">{tech}</span>
                     ))}
                   </div>
-
+ 
                   <div className="flex items-center gap-4 pt-2">
                     <div className="flex items-center gap-2 text-sm text-text-muted">
                       <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -105,9 +97,9 @@ export default function About() {
                 </div>
               </div>
             </div>
-
+ 
             {/* Stats Grid */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+            <div className="grid grid-cols-3 gap-4">
               {stats.map((stat, i) => (
                 <motion.div
                   key={stat.label}
@@ -115,64 +107,29 @@ export default function About() {
                   variants={itemVariants}
                   whileHover={{ scale: 1.05, borderColor: "rgba(245,158,11,0.3)" }}
                 >
-                  <svg className="w-6 h-6 mx-auto mb-2 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={stat.icon} />
-                  </svg>
                   <div className="text-2xl font-black gradient-text">{stat.value}</div>
                   <div className="text-xs text-text-muted mt-1">{stat.label}</div>
                 </motion.div>
               ))}
             </div>
           </motion.div>
-
+ 
           {/* Right Column - Bio & Highlights */}
-          <motion.div variants={itemVariants} className="space-y-6">
+          <motion.div variants={itemVariants} className="space-y-10">
             <div className="card">
               <h3 className="text-lg font-bold mb-4 flex items-center gap-2">
                 <span className="w-1.5 h-6 rounded-full bg-primary" />
                 Who I Am
               </h3>
-              <div className="space-y-4 text-text-secondary leading-relaxed">
+              <div className="space-y-4 text-text-secondary leading-relaxed p-2">
                 <p>
-                  I am a passionate Full Stack Developer with expertise in building modern web applications
-                  and scalable backend systems. My journey in tech started with a curiosity for how things
-                  work, which evolved into a deep appreciation for elegant, efficient code.
-                </p>
-                <p>
-                  Currently working on exciting projects in the blockchain and cloud infrastructure space,
-                  I bring a blend of technical expertise and creative problem-solving to every challenge.
-                  I believe in writing code that's not just functional, but maintainable and scalable.
+                  I am a Pre Final Year B.Tech Computer Science & Engineering student at Manipal University Jaipur, deeply passionate about Full-Stack Development, AI/ML, Cloud Computing, and building scalable software systems.
                 </p>
               </div>
             </div>
 
-            <div className="card">
-              <h3 className="text-lg font-bold mb-4 flex items-center gap-2">
-                <span className="w-1.5 h-6 rounded-full bg-secondary" />
-                Key Highlights
-              </h3>
-              <ul className="space-y-3">
-                {highlights.map((item, i) => (
-                  <motion.li
-                    key={i}
-                    className="flex items-start gap-3"
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ delay: i * 0.1 }}
-                    viewport={{ once: true }}
-                  >
-                    <svg className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                    <span className="text-text-secondary">{item}</span>
-                  </motion.li>
-                ))}
-              </ul>
-            </div>
-
             {/* Download Resume Button */}
             <motion.a
-              href="#contact"
               className="btn-primary w-full justify-center"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
