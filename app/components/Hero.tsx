@@ -106,7 +106,7 @@ export default function Hero() {
   }
 
   return (
-    <section ref={containerRef} className="relative min-h-[100dvh] flex items-center overflow-hidden bg-black noise-bg py-20 lg:py-0">
+    <section id="hero" ref={containerRef} className="relative min-h-[100dvh] flex items-center overflow-hidden bg-black noise-bg py-20 lg:py-0">
       {/* Ambient background styling */}
       <div className="absolute inset-0 overflow-hidden">
         {/* Soft white spotlights */}

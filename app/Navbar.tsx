@@ -1,8 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import Link from "next/link";
 
 const navLinks = [
   { name: "About", href: "#about" },
@@ -16,18 +15,57 @@ export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
 
+  const scrollToSection = useCallback(
+    (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+      e.preventDefault();
+      setIsMobileMenuOpen(false);
+      document.body.style.overflow = "";
+
+      if (href === "/" || href === "#hero") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        window.history.pushState(null, "", "/");
+        setActiveSection("");
+        return;
+      }
+
+      const targetId = href.replace("#", "");
+      const element = document.getElementById(targetId);
+
+      if (element) {
+        // Small delay if closing mobile menu so body unlock takes effect
+        setTimeout(() => {
+          const navbarOffset = 80;
+          const elementPosition = element.getBoundingClientRect().top;
+          const targetPosition = elementPosition + window.pageYOffset - navbarOffset;
+
+          window.scrollTo({
+            top: targetPosition,
+            behavior: "smooth",
+          });
+
+          window.history.pushState(null, "", href);
+          setActiveSection(targetId);
+        }, isMobileMenuOpen ? 100 : 0);
+      }
+    },
+    [isMobileMenuOpen]
+  );
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
 
-      // Determine active section
-      const sections = navLinks.map((link) => link.href.slice(1));
-      for (const section of sections.reverse()) {
-        const element = document.getElementById(section);
+      // Determine active section based on scroll offset
+      const sections = [...navLinks.map((link) => link.href.slice(1)), "contact"];
+      const scrollPosition = window.scrollY + 160;
+
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const sectionId = sections[i];
+        const element = document.getElementById(sectionId);
         if (element) {
-          const rect = element.getBoundingClientRect();
-          if (rect.top <= 150) {
-            setActiveSection(section);
+          const top = element.offsetTop;
+          if (scrollPosition >= top) {
+            setActiveSection(sectionId);
             break;
           }
         }
@@ -35,7 +73,25 @@ export default function Navbar() {
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Handle initial hash on page load if present
+  useEffect(() => {
+    if (window.location.hash) {
+      const targetId = window.location.hash.replace("#", "");
+      const element = document.getElementById(targetId);
+      if (element) {
+        setTimeout(() => {
+          const navbarOffset = 80;
+          const elementPosition = element.getBoundingClientRect().top;
+          const targetPosition = elementPosition + window.pageYOffset - navbarOffset;
+          window.scrollTo({ top: targetPosition, behavior: "smooth" });
+          setActiveSection(targetId);
+        }, 500);
+      }
+    }
   }, []);
 
   // Lock body scroll when mobile menu is open
@@ -66,7 +122,11 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto px-6">
           <nav className="flex items-center justify-between">
             {/* Logo - Minimalist Monochrome */}
-            <Link href="/" className="flex items-center gap-2 select-none">
+            <a
+              href="/"
+              onClick={(e) => scrollToSection(e, "/")}
+              className="flex items-center gap-2 select-none cursor-pointer"
+            >
               <motion.div
                 className="w-8 h-8 rounded bg-white flex items-center justify-center font-bold text-black text-sm"
                 whileHover={{ rotate: 180 }}
@@ -77,15 +137,16 @@ export default function Navbar() {
               <span className="font-medium text-base hidden sm:block tracking-wide font-serif text-white">
                 Prasoon<span className="text-neutral-500 font-sans font-light text-xs"> Mathur</span>
               </span>
-            </Link>
+            </a>
 
             {/* Desktop Links */}
             <div className="hidden md:flex items-center gap-1">
               {navLinks.map((link) => (
-                <Link
+                <a
                   key={link.name}
                   href={link.href}
-                  className={`relative px-4 py-2 text-xs font-medium uppercase tracking-wider transition-colors ${
+                  onClick={(e) => scrollToSection(e, link.href)}
+                  className={`relative px-4 py-2 text-xs font-medium uppercase tracking-wider transition-colors cursor-pointer ${
                     activeSection === link.href.slice(1)
                       ? "text-white font-semibold"
                       : "text-neutral-400 hover:text-white"
@@ -98,7 +159,7 @@ export default function Navbar() {
                       layoutId="navIndicator"
                     />
                   )}
-                </Link>
+                </a>
               ))}
             </div>
 
@@ -106,7 +167,8 @@ export default function Navbar() {
             <div className="flex items-center gap-4">
               <motion.a
                 href="#contact"
-                className="btn-primary hidden sm:inline-flex text-[10px] px-4 py-2 rounded"
+                onClick={(e) => scrollToSection(e, "#contact")}
+                className="btn-primary hidden sm:inline-flex text-[10px] px-4 py-2 rounded cursor-pointer"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
@@ -115,7 +177,7 @@ export default function Navbar() {
 
               {/* Mobile Menu Toggle */}
               <motion.button
-                className="md:hidden w-8 h-8 rounded bg-neutral-900 border border-neutral-800 flex items-center justify-center text-white"
+                className="md:hidden w-8 h-8 rounded bg-neutral-900 border border-neutral-800 flex items-center justify-center text-white cursor-pointer"
                 onClick={() => setIsMobileMenuOpen(true)}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -158,7 +220,7 @@ export default function Navbar() {
             >
               {/* Close Button */}
               <motion.button
-                className="absolute top-6 right-6 w-10 h-10 rounded-full bg-neutral-900 border border-neutral-800 flex items-center justify-center text-white"
+                className="absolute top-6 right-6 w-10 h-10 rounded-full bg-neutral-900 border border-neutral-800 flex items-center justify-center text-white cursor-pointer"
                 onClick={() => setIsMobileMenuOpen(false)}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -178,13 +240,13 @@ export default function Navbar() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.1 + index * 0.05 }}
                   >
-                    <Link
+                    <a
                       href={link.href}
-                      onClick={() => setIsMobileMenuOpen(false)}
-                      className="block text-2xl font-serif text-neutral-400 hover:text-white transition-colors"
+                      onClick={(e) => scrollToSection(e, link.href)}
+                      className="block text-2xl font-serif text-neutral-400 hover:text-white transition-colors cursor-pointer"
                     >
                       {link.name}
-                    </Link>
+                    </a>
                   </motion.div>
                 ))}
               </nav>
@@ -192,8 +254,8 @@ export default function Navbar() {
               {/* CTA */}
               <motion.a
                 href="#contact"
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="btn-primary mt-12 rounded px-6 py-2.5"
+                onClick={(e) => scrollToSection(e, "#contact")}
+                className="btn-primary mt-12 rounded px-6 py-2.5 cursor-pointer"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4 }}

@@ -130,6 +130,9 @@ export default function About() {
 
             {/* Download Resume Button */}
             <motion.a
+              href="/Resume/Resume%20-%20Nov-26.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
               className="btn-primary w-full justify-center"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
